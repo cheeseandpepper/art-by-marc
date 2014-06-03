@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 
-config/secrets.yml
+# I tried to be secure but fucking heroku, fucking devise, fucking shit!
+#config/secrets.yml
