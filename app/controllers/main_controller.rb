@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
   def index
-    @paintings = Painting.all
+    @paintings = Painting.all.reverse
   end
 
   def show
