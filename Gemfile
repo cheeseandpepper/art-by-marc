@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-
+gem 'mail_form'
+gem 'simple_form'
+gem 'paperclip', github: 'thoughtbot/paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0.rc2'
 # Use SCSS for stylesheets

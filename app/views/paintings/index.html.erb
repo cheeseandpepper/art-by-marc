@@ -1,0 +1,49 @@
+
+<%- model_class = Painting -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:photo_file_name) %></th>
+      <th><%= model_class.human_attribute_name(:photo_content_type) %></th>
+      <th><%= model_class.human_attribute_name(:photo_file_size) %></th>
+      <th><%= model_class.human_attribute_name(:painting) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @paintings.each do |painting| %>
+      <tr>
+        <td><%= painting.id %></td>
+        <td><%= painting.title %></td>
+        
+        <td><%= painting.description %></td>
+        <td><%= painting.photo_file_name %></td>
+        <td><%= painting.photo_content_type %></td>
+        <td><%= painting.photo_file_size %></td>
+        <td><%= link_to image_tag(painting.photo.url(:thumb)), painting_path(painting) %></td>
+        <td><%=l painting.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_painting_path(painting), :class => 'btn btn-mini btn-primary' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      painting_path(painting),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_painting_path,
+            :class => 'btn btn-primary' %>

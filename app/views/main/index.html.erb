@@ -1,0 +1,5 @@
+<div class="container">
+<% @paintings.each do |painting| %>
+  <%= link_to image_tag(painting.photo.url(:medium)), painting_path(painting) %>
+<% end %>
+</div>
